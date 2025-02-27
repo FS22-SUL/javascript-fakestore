@@ -54,3 +54,17 @@ function filtrarPorCategoria(categoria){
     carregarProdutos(filtrados)
 }
 
+function filtrarPorNome(nome) {
+   let produtosFiltrados = produtos.filter((produto) => produto.title.toLowerCase().includes(nome.toLowerCase()));
+    carregarProdutos(produtosFiltrados);
+}
+
+function ordenarProdutos(tipo){
+    let ordenados = [];
+    if(tipo == "menorPreco"){
+        ordenados = produtos.toSorted((produtoA, produtoB) => produtoA.price - produtoB.price);
+    } else {
+        ordenados = produtos.toSorted((produtoA, produtoB) => produtoB.rating.rate - produtoA.rating.rate);
+    }
+    carregarProdutos(ordenados);
+}
